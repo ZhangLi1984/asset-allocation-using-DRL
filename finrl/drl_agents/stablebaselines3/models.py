@@ -42,7 +42,6 @@ class TensorboardCallback(BaseCallback):
             self.logger.record(key="train/reward", value=self.locals["reward"][0])
         return True
 
-
 class DRLAgent:
     """Provides implementations for DRL algorithms
 
@@ -97,7 +96,7 @@ class DRLAgent:
             **model_kwargs,
         )
         return model
-
+    
     def train_model(self, model, tb_log_name, total_timesteps=5000):
         model = model.learn(
             total_timesteps=total_timesteps,
@@ -105,7 +104,7 @@ class DRLAgent:
             callback=TensorboardCallback(),
         )
         return model
-
+            
     @staticmethod
     def DRL_prediction(model, environment):
         test_env, test_obs = environment.get_sb_env()
@@ -158,7 +157,6 @@ class DRLAgent:
         print("episode_return", episode_return)
         print("Test Finished!")
         return episode_total_assets
-
 
 class DRLEnsembleAgent:
     @staticmethod
